@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易論壇</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左側板塊選單 -->
+        <div class="sidebar">
+            <h3>板塊</h3>
+            <ul id="board-list"></ul>
+        </div>
+
+        <!-- 右側主視圖 -->
+        <div class="main">
+            <div class="header">
+                <h2 id="board-title">選擇一個板塊</h2>
+                <p id="board-info"></p>
+            </div>
+            <div class="posts" id="posts"></div>
+
+            <!-- 右下角新增貼文按鈕 -->
+            <button class="add-post" id="add-post">＋</button>
+        </div>
+    </div>
+
+    <!-- 上傳和下載文件 -->
+    <input type="file" id="upload-file" accept=".txt" style="display: none;">
+    <a id="download-link" style="display: none;">下載</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
