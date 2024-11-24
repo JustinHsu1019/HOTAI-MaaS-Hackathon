@@ -1,6 +1,21 @@
 // 初始化數據
-let boards = {};
-let posts = [];
+let boards = JSON.parse(localStorage.getItem('boards')) || {};
+let posts = JSON.parse(localStorage.getItem('posts')) || [];
+let selectedBoard = null;
+let selectedPost = null;
+
+// 初始化 Bootstrap 模態框實例
+const postDetailsModalElement = document.getElementById('postDetailsModal');
+const postDetailsModal = new bootstrap.Modal(postDetailsModalElement);
+
+const popupModalElement = document.getElementById('popup');
+const popupModal = new bootstrap.Modal(popupModalElement);
+
+// 儲存數據到 localStorage
+function saveData() {
+    localStorage.setItem('boards', JSON.stringify(boards));
+    localStorage.setItem('posts', JSON.stringify(posts));
+}
 
 // 加載板塊
 function loadBoards() {
@@ -9,13 +24,15 @@ function loadBoards() {
     Object.keys(boards).forEach(board => {
         const li = document.createElement('li');
         li.textContent = `${board} (${boards[board].length} 則貼文)`;
+        li.classList.add('list-group-item', 'list-group-item-action');
         li.addEventListener('click', () => showBoard(board));
         boardList.appendChild(li);
     });
 }
 
-// 顯示板塊
+// 顯示板塊貼文
 function showBoard(boardName) {
+    selectedBoard = boardName;
     const boardTitle = document.getElementById('board-title');
     const boardInfo = document.getElementById('board-info');
     const postContainer = document.getElementById('posts');
@@ -26,57 +43,108 @@ function showBoard(boardName) {
 
     boards[boardName].forEach(postId => {
         const post = posts.find(p => p.id === postId);
-        const div = document.createElement('div');
-        div.className = 'post';
-        div.innerHTML = `<h4>${post.title}</h4><p>${post.content.substring(0, 50)}...</p>`;
-        postContainer.appendChild(div);
+        if (post) {
+            const div = document.createElement('div');
+            div.className = 'post card mb-2';
+            div.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${post.title}</h5>
+                    <p class="card-text">${post.content.substring(0, 50)}...</p>
+                </div>
+            `;
+            div.addEventListener('click', () => showPostDetails(post));
+            postContainer.appendChild(div);
+        }
     });
+}
+
+// 顯示貼文詳細內容
+function showPostDetails(post) {
+    selectedPost = post;
+    document.getElementById('detail-title').textContent = post.title;
+    document.getElementById('detail-content').textContent = post.content;
+    document.getElementById('like-count').textContent = post.likes || 0;
+
+    const commentList = document.getElementById('comments');
+    commentList.innerHTML = '';
+    (post.comments || []).forEach(comment => {
+        const li = document.createElement('li');
+        li.textContent = comment;
+        li.classList.add('list-group-item');
+        commentList.appendChild(li);
+    });
+
+    postDetailsModal.show();
+}
+
+// 新增留言
+function addComment() {
+    const input = document.getElementById('comment-input');
+    const comment = input.value.trim();
+    if (comment && selectedPost) {
+        selectedPost.comments = selectedPost.comments || [];
+        selectedPost.comments.push(comment);
+        saveData();
+
+        // 更新留言列表
+        const commentList = document.getElementById('comments');
+        const li = document.createElement('li');
+        li.textContent = comment;
+        li.classList.add('list-group-item');
+        commentList.appendChild(li);
+
+        input.value = '';
+    }
+}
+
+// 按讚
+function likePost() {
+    if (selectedPost) {
+        selectedPost.likes = (selectedPost.likes || 0) + 1;
+        document.getElementById('like-count').textContent = selectedPost.likes;
+        saveData();
+    }
 }
 
 // 新增貼文
 function addPost() {
-    const title = prompt('請輸入貼文標題:');
-    const content = prompt('請輸入貼文內容:');
-    const tags = prompt('請輸入貼文標籤 (用逗號分隔):').split(',');
+    const title = document.getElementById('post-title').value.trim();
+    const content = document.getElementById('post-content').value.trim();
+    const tags = document.getElementById('post-tags').value.split(',').map(t => t.trim()).filter(t => t);
 
-    const postId = `post-${posts.length + 1}`;
-    posts.push({ id: postId, title, content, tags });
+    if (title && content && tags.length) {
+        const postId = `post-${posts.length + 1}`;
+        const newPost = { id: postId, title, content, tags, likes: 0, comments: [] };
+        posts.push(newPost);
 
-    tags.forEach(tag => {
-        if (!boards[tag]) boards[tag] = [];
-        boards[tag].push(postId);
-    });
+        tags.forEach(tag => {
+            if (!boards[tag]) boards[tag] = [];
+            boards[tag].push(postId);
+        });
 
-    saveData();
-    loadBoards();
-}
-
-// 保存數據
-function saveData() {
-    const data = { boards, posts };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const link = document.getElementById('download-link');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'forum-data.txt';
-    link.click();
-}
-
-// 加載數據
-function loadData(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-        const data = JSON.parse(reader.result);
-        boards = data.boards || {};
-        posts = data.posts || [];
+        saveData();
+        popupModal.hide();
         loadBoards();
-    };
-    reader.readAsText(file);
+        if (selectedBoard) showBoard(selectedBoard);
+    }
+}
+
+// 顯示新增貼文視窗
+function openPopup() {
+    popupModal.show();
+}
+
+// 關閉新增貼文視窗
+function closePopup() {
+    popupModal.hide();
 }
 
 // 初始化事件
-document.getElementById('add-post').addEventListener('click', addPost);
-document.getElementById('upload-file').addEventListener('change', loadData);
+document.getElementById('add-post').addEventListener('click', openPopup);
+document.getElementById('submit-post').addEventListener('click', addPost);
+document.getElementById('close-popup').addEventListener('click', closePopup);
+document.getElementById('comment-button').addEventListener('click', addComment);
+document.getElementById('like-button').addEventListener('click', likePost);
 
 // 初始化板塊
 loadBoards();

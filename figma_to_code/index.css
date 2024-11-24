@@ -1,466 +1,510 @@
 .iphone-14-15-pro-max-5-child {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	background-color: #ffce42;
-  	width: 430px;
-  	height: 113px;
-}
-.frame-icon {
-  	position: absolute;
-  	top: 66px;
-  	left: 18px;
-  	width: 30px;
-  	height: 30px;
-  	overflow: hidden;
-  	object-fit: contain;
-}
-.image-29-icon {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	width: 94px;
-  	height: 65.8px;
-  	object-fit: cover;
-}
-.image-30-icon {
-  	position: absolute;
-  	top: 0px;
-  	left: 308px;
-  	width: 122px;
-  	height: 65.8px;
-  	object-fit: cover;
-}
-.div {
-  	position: absolute;
-  	top: 215px;
-  	left: 70px;
-  	font-size: 13px;
-  	color: rgba(190, 192, 194, 0.67);
-  	display: inline-block;
-  	width: 139px;
-  	height: 21px;
-}
-.iphone-14-15-pro-max-5-item {
-  	position: absolute;
-  	top: 194px;
-  	left: 21px;
-  	border-radius: 50%;
-  	background-color: #d9d9d9;
-  	width: 36px;
-  	height: 36px;
-}
-.b {
-  	position: absolute;
-  	top: 140px;
-  	left: 24px;
-  	font-size: 24px;
-  	display: flex;
-  	color: #000;
-  	align-items: center;
-  	width: 251px;
-  	height: 40px;
-}
-.div1 {
-  	position: absolute;
-  	top: 504px;
-  	left: calc(50% - 188px);
-  	color: #000;
-  	white-space: pre-wrap;
-  	display: inline-block;
-  	width: 378px;
-  	height: 92px;
-}
-.group-child {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	border-radius: 16px 16px 0px 0px;
-  	background-color: #f2f3f8;
-  	width: 390px;
-  	height: 115px;
-}
-.group-item {
-  	position: absolute;
-  	top: 115px;
-  	left: 0px;
-  	filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
-  	border-radius: 0px 0px 14px 14px;
-  	border: 1px solid #f2f3f8;
-  	box-sizing: border-box;
-  	width: 390px;
-  	height: 66px;
-}
-.b1 {
-  	position: absolute;
-  	top: 125px;
-  	left: 12px;
-  	display: flex;
-  	align-items: center;
-  	width: 228px;
-  	height: 29px;
-}
-.div2 {
-  	position: absolute;
-  	top: 148px;
-  	left: 14px;
-  	font-size: 10px;
-  	color: #7e8a99;
-  	display: flex;
-  	align-items: center;
-  	width: 205px;
-  	height: 22px;
-}
-.group-inner {
-  	position: absolute;
-  	top: 133px;
-  	left: 347px;
-  	border-radius: 50%;
-  	background-color: #fdfdfd;
-  	border: 1px solid #d7dbe0;
-  	box-sizing: border-box;
-  	width: 30px;
-  	height: 30px;
-}
-.ellipse-div {
-  	position: absolute;
-  	top: 133px;
-  	left: 306px;
-  	border-radius: 50%;
-  	background-color: #fdfdfd;
-  	border: 1px solid #d7dbe0;
-  	box-sizing: border-box;
-  	width: 30px;
-  	height: 30px;
-}
-.rectangle-parent {
-  	position: absolute;
-  	top: 605px;
-  	left: 21px;
-  	width: 390px;
-  	height: 181px;
-  	font-size: 20px;
-  	color: #000;
-}
-.iphone-14-15-pro-max-5-inner {
-  	position: absolute;
-  	top: 816px;
-  	left: calc(50% - 214px);
-  	max-height: 100%;
-  	width: 430px;
-}
-.frame-icon1 {
-  	position: absolute;
-  	height: 3.54%;
-  	width: 7.67%;
-  	top: 15.02%;
-  	right: 5.81%;
-  	bottom: 81.44%;
-  	left: 86.51%;
-  	max-width: 100%;
-  	overflow: hidden;
-  	max-height: 100%;
-}
-.frame-child {
-  	position: absolute;
-  	top: calc(50% - 12.9px);
-  	left: calc(50% - 38.75px);
-  	border-radius: 11.98px;
-  	background-color: #ffce42;
-  	width: 77.5px;
-  	height: 25.8px;
-}
-.div3 {
-  	position: absolute;
-  	top: calc(50% - 12.27px);
-  	left: calc(50% - 25.51px);
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	width: 51.7px;
-  	height: 25.2px;
-}
-.rectangle-group {
-  	position: absolute;
-  	top: 830px;
-  	left: 21px;
-  	width: 77.5px;
-  	height: 25.8px;
-  	overflow: hidden;
-  	text-align: center;
-  	font-size: 14.36px;
-  	color: #4c3636;
-}
-.frame-item {
-  	position: absolute;
-  	top: calc(50% - 12.9px);
-  	left: calc(50% - 38.75px);
-  	border-radius: 11.98px;
-  	border: 1.4px solid #ffce42;
-  	box-sizing: border-box;
-  	width: 77.5px;
-  	height: 25.8px;
-}
-.rectangle-container {
-  	position: absolute;
-  	top: 830px;
-  	left: 111.46px;
-  	width: 77.5px;
-  	height: 25.8px;
-  	overflow: hidden;
-  	text-align: center;
-  	font-size: 14.36px;
-  	color: #a5a5a5;
-}
-.b2 {
-  	position: absolute;
-  	top: 242px;
-  	left: 22px;
-  	font-size: 18px;
-  	display: flex;
-  	color: #000;
-  	align-items: center;
-  	width: 206px;
-  	height: 40px;
-}
-.b3 {
-  	position: absolute;
-  	top: 192px;
-  	left: 69px;
-  	font-size: 18px;
-  	display: inline-block;
-  	color: #000;
-  	width: 98px;
-  	height: 31px;
-}
-.b4 {
-  	position: absolute;
-  	top: 61px;
-  	left: calc(50% - 220px);
-  	font-size: 18px;
-  	display: flex;
-  	color: #000;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 206px;
-  	height: 40px;
-}
-.b5 {
-  	position: absolute;
-  	top: 282px;
-  	left: 21px;
-  	line-height: 27px;
-  	display: flex;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 75px;
-  	height: 29px;
-}
-.div5 {
-  	position: absolute;
-  	top: 282px;
-  	left: 112px;
-  	line-height: 27px;
-  	display: flex;
-  	align-items: center;
-  	width: 296px;
-  	height: 29px;
-}
-.b6 {
-  	position: absolute;
-  	top: 312px;
-  	left: 21px;
-  	line-height: 27px;
-  	display: flex;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 75px;
-  	height: 29px;
-}
-.div6 {
-  	position: absolute;
-  	top: 312px;
-  	left: 112px;
-  	line-height: 27px;
-  	display: flex;
-  	align-items: center;
-  	width: 296px;
-  	height: 29px;
-}
-.b7 {
-  	position: absolute;
-  	top: 342px;
-  	left: 21px;
-  	line-height: 27px;
-  	display: flex;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 75px;
-  	height: 29px;
-}
-.div7 {
-  	position: absolute;
-  	top: 342px;
-  	left: 112px;
-  	line-height: 27px;
-  	display: flex;
-  	align-items: center;
-  	width: 296px;
-  	height: 29px;
-}
-.b8 {
-  	position: absolute;
-  	top: 372px;
-  	left: 21px;
-  	line-height: 27px;
-  	display: flex;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 75px;
-  	height: 29px;
-}
-.div8 {
-  	position: absolute;
-  	top: 372px;
-  	left: 112px;
-  	line-height: 27px;
-  	display: flex;
-  	align-items: center;
-  	width: 296px;
-  	height: 29px;
-}
-.b9 {
-  	position: absolute;
-  	top: 402px;
-  	left: 21px;
-  	line-height: 27px;
-  	display: flex;
-  	text-align: center;
-  	align-items: center;
-  	justify-content: center;
-  	width: 75px;
-  	height: 29px;
-}
-.div9 {
-  	position: absolute;
-  	top: 402px;
-  	left: 112px;
-  	line-height: 27px;
-  	display: flex;
-  	align-items: center;
-  	width: 296px;
-  	height: 29px;
-}
-.b10 {
-  	position: absolute;
-  	top: 452px;
-  	left: 22px;
-  	font-size: 18px;
-  	display: flex;
-  	color: #000;
-  	align-items: center;
-  	width: 139px;
-  	height: 40px;
-}
-.frame-icon2 {
-  	position: absolute;
-  	top: 64px;
-  	left: 373px;
-  	width: 32px;
-  	height: 32px;
-  	overflow: hidden;
-}
-.image-32-icon {
-  	position: absolute;
-  	top: 847px;
-  	left: 0px;
-  	width: 430px;
-  	height: 84.8px;
-  	object-fit: cover;
-}
-.rectangle-div {
-  	position: absolute;
-  	top: 852px;
-  	left: calc(50% - 202px);
-  	border-radius: 6px;
-  	background-color: #f2f2f2;
-  	width: 405px;
-  	height: 37px;
-}
-.frame-icon3 {
-  	position: absolute;
-  	top: 858px;
-  	left: 386px;
-  	width: 24px;
-  	height: 24px;
-  	overflow: hidden;
-}
-.div10 {
-  	position: absolute;
-  	top: calc(50% + 391px);
-  	left: calc(50% - 197px);
-  	font-size: 14.36px;
-  	color: #a5a5a5;
-  	text-align: center;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	width: 51.7px;
-  	height: 25.2px;
-}
-.frame-icon4 {
-  	position: absolute;
-  	height: 3.11%;
-  	width: 6.74%;
-  	top: 15.24%;
-  	right: 16.05%;
-  	bottom: 81.65%;
-  	left: 77.21%;
-  	max-width: 100%;
-  	overflow: hidden;
-  	max-height: 100%;
-}
-.verified-24dp-000000-fill0-wgh-icon {
-  	position: absolute;
-  	top: 192px;
-  	left: 161px;
-  	width: 22px;
-  	height: 23px;
-  	object-fit: cover;
-}
-.iphone-14-15-pro-max-5-child1 {
-  	position: absolute;
-  	top: 198px;
-  	left: 167px;
-  	border-radius: 50%;
-  	background-color: #fff;
-  	width: 10px;
-  	height: 11px;
-}
-.b11 {
-  	position: absolute;
-  	top: 198px;
-  	left: 167px;
-  	font-size: 8px;
-  	display: inline-block;
-  	color: #000;
-  	width: 10px;
-  	height: 9px;
-}
-.iphone-14-15-pro-max-5 {
-  	width: 100%;
-  	position: relative;
-  	background-color: #fff;
-  	height: 932px;
-  	overflow: hidden;
-  	text-align: left;
-  	font-size: 16px;
-  	color: #454444;
-  	font-family: Inter;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #ffce42;
+	width: 430px;
+	height: 113px;
 }
 
+.frame-icon {
+	position: absolute;
+	top: 66px;
+	left: 18px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	object-fit: contain;
+}
+
+.image-29-icon {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 94px;
+	height: 65.8px;
+	object-fit: cover;
+}
+
+.image-30-icon {
+	position: absolute;
+	top: 0px;
+	left: 308px;
+	width: 122px;
+	height: 65.8px;
+	object-fit: cover;
+}
+
+.div {
+	position: absolute;
+	top: 215px;
+	left: 70px;
+	font-size: 13px;
+	color: rgba(190, 192, 194, 0.67);
+	display: inline-block;
+	width: 139px;
+	height: 21px;
+}
+
+.iphone-14-15-pro-max-5-item {
+	position: absolute;
+	top: 194px;
+	left: 21px;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+	width: 36px;
+	height: 36px;
+}
+
+.b {
+	position: absolute;
+	top: 140px;
+	left: 24px;
+	font-size: 24px;
+	display: flex;
+	color: #000;
+	align-items: center;
+	width: 251px;
+	height: 40px;
+}
+
+.div1 {
+	position: absolute;
+	top: 504px;
+	left: calc(50% - 188px);
+	color: #000;
+	white-space: pre-wrap;
+	display: inline-block;
+	width: 378px;
+	height: 92px;
+}
+
+.group-child {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border-radius: 16px 16px 0px 0px;
+	background-color: #f2f3f8;
+	width: 390px;
+	height: 115px;
+}
+
+.group-item {
+	position: absolute;
+	top: 115px;
+	left: 0px;
+	filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
+	border-radius: 0px 0px 14px 14px;
+	border: 1px solid #f2f3f8;
+	box-sizing: border-box;
+	width: 390px;
+	height: 66px;
+}
+
+.b1 {
+	position: absolute;
+	top: 125px;
+	left: 12px;
+	display: flex;
+	align-items: center;
+	width: 228px;
+	height: 29px;
+}
+
+.div2 {
+	position: absolute;
+	top: 148px;
+	left: 14px;
+	font-size: 10px;
+	color: #7e8a99;
+	display: flex;
+	align-items: center;
+	width: 205px;
+	height: 22px;
+}
+
+.group-inner {
+	position: absolute;
+	top: 133px;
+	left: 347px;
+	border-radius: 50%;
+	background-color: #fdfdfd;
+	border: 1px solid #d7dbe0;
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+}
+
+.ellipse-div {
+	position: absolute;
+	top: 133px;
+	left: 306px;
+	border-radius: 50%;
+	background-color: #fdfdfd;
+	border: 1px solid #d7dbe0;
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+}
+
+.rectangle-parent {
+	position: absolute;
+	top: 605px;
+	left: 21px;
+	width: 390px;
+	height: 181px;
+	font-size: 20px;
+	color: #000;
+}
+
+.iphone-14-15-pro-max-5-inner {
+	position: absolute;
+	top: 816px;
+	left: calc(50% - 214px);
+	max-height: 100%;
+	width: 430px;
+}
+
+.frame-icon1 {
+	position: absolute;
+	height: 3.54%;
+	width: 7.67%;
+	top: 15.02%;
+	right: 5.81%;
+	bottom: 81.44%;
+	left: 86.51%;
+	max-width: 100%;
+	overflow: hidden;
+	max-height: 100%;
+}
+
+.frame-child {
+	position: absolute;
+	top: calc(50% - 12.9px);
+	left: calc(50% - 38.75px);
+	border-radius: 11.98px;
+	background-color: #ffce42;
+	width: 77.5px;
+	height: 25.8px;
+}
+
+.div3 {
+	position: absolute;
+	top: calc(50% - 12.27px);
+	left: calc(50% - 25.51px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 51.7px;
+	height: 25.2px;
+}
+
+.rectangle-group {
+	position: absolute;
+	top: 830px;
+	left: 21px;
+	width: 77.5px;
+	height: 25.8px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14.36px;
+	color: #4c3636;
+}
+
+.frame-item {
+	position: absolute;
+	top: calc(50% - 12.9px);
+	left: calc(50% - 38.75px);
+	border-radius: 11.98px;
+	border: 1.4px solid #ffce42;
+	box-sizing: border-box;
+	width: 77.5px;
+	height: 25.8px;
+}
+
+.rectangle-container {
+	position: absolute;
+	top: 830px;
+	left: 111.46px;
+	width: 77.5px;
+	height: 25.8px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14.36px;
+	color: #a5a5a5;
+}
+
+.b2 {
+	position: absolute;
+	top: 242px;
+	left: 22px;
+	font-size: 18px;
+	display: flex;
+	color: #000;
+	align-items: center;
+	width: 206px;
+	height: 40px;
+}
+
+.b3 {
+	position: absolute;
+	top: 192px;
+	left: 69px;
+	font-size: 18px;
+	display: inline-block;
+	color: #000;
+	width: 98px;
+	height: 31px;
+}
+
+.b4 {
+	position: absolute;
+	top: 61px;
+	left: calc(50% - 220px);
+	font-size: 18px;
+	display: flex;
+	color: #000;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 206px;
+	height: 40px;
+}
+
+.b5 {
+	position: absolute;
+	top: 282px;
+	left: 21px;
+	line-height: 27px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	height: 29px;
+}
+
+.div5 {
+	position: absolute;
+	top: 282px;
+	left: 112px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	width: 296px;
+	height: 29px;
+}
+
+.b6 {
+	position: absolute;
+	top: 312px;
+	left: 21px;
+	line-height: 27px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	height: 29px;
+}
+
+.div6 {
+	position: absolute;
+	top: 312px;
+	left: 112px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	width: 296px;
+	height: 29px;
+}
+
+.b7 {
+	position: absolute;
+	top: 342px;
+	left: 21px;
+	line-height: 27px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	height: 29px;
+}
+
+.div7 {
+	position: absolute;
+	top: 342px;
+	left: 112px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	width: 296px;
+	height: 29px;
+}
+
+.b8 {
+	position: absolute;
+	top: 372px;
+	left: 21px;
+	line-height: 27px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	height: 29px;
+}
+
+.div8 {
+	position: absolute;
+	top: 372px;
+	left: 112px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	width: 296px;
+	height: 29px;
+}
+
+.b9 {
+	position: absolute;
+	top: 402px;
+	left: 21px;
+	line-height: 27px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	height: 29px;
+}
+
+.div9 {
+	position: absolute;
+	top: 402px;
+	left: 112px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	width: 296px;
+	height: 29px;
+}
+
+.b10 {
+	position: absolute;
+	top: 452px;
+	left: 22px;
+	font-size: 18px;
+	display: flex;
+	color: #000;
+	align-items: center;
+	width: 139px;
+	height: 40px;
+}
+
+.frame-icon2 {
+	position: absolute;
+	top: 64px;
+	left: 373px;
+	width: 32px;
+	height: 32px;
+	overflow: hidden;
+}
+
+.image-32-icon {
+	position: absolute;
+	top: 847px;
+	left: 0px;
+	width: 430px;
+	height: 84.8px;
+	object-fit: cover;
+}
+
+.rectangle-div {
+	position: absolute;
+	top: 852px;
+	left: calc(50% - 202px);
+	border-radius: 6px;
+	background-color: #f2f2f2;
+	width: 405px;
+	height: 37px;
+}
+
+.frame-icon3 {
+	position: absolute;
+	top: 858px;
+	left: 386px;
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+}
+
+.div10 {
+	position: absolute;
+	top: calc(50% + 391px);
+	left: calc(50% - 197px);
+	font-size: 14.36px;
+	color: #a5a5a5;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 51.7px;
+	height: 25.2px;
+}
+
+.frame-icon4 {
+	position: absolute;
+	height: 3.11%;
+	width: 6.74%;
+	top: 15.24%;
+	right: 16.05%;
+	bottom: 81.65%;
+	left: 77.21%;
+	max-width: 100%;
+	overflow: hidden;
+	max-height: 100%;
+}
+
+.verified-24dp-000000-fill0-wgh-icon {
+	position: absolute;
+	top: 192px;
+	left: 161px;
+	width: 22px;
+	height: 23px;
+	object-fit: cover;
+}
+
+.iphone-14-15-pro-max-5-child1 {
+	position: absolute;
+	top: 198px;
+	left: 167px;
+	border-radius: 50%;
+	background-color: #fff;
+	width: 10px;
+	height: 11px;
+}
+
+.b11 {
+	position: absolute;
+	top: 198px;
+	left: 167px;
+	font-size: 8px;
+	display: inline-block;
+	color: #000;
+	width: 10px;
+	height: 9px;
+}
+
+.iphone-14-15-pro-max-5 {
+	width: 100%;
+	position: relative;
+	background-color: #fff;
+	height: 932px;
+	overflow: hidden;
+	text-align: left;
+	font-size: 16px;
+	color: #454444;
+	font-family: Inter;
+}
