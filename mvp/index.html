@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <!-- 保持不變的 head 內容 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>論壇功能 MVP</title>
@@ -11,22 +12,29 @@
 
 <body>
     <div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
-        <div class="forum-container bg-white rounded shadow" style="width: 450px; height: 640px; position: relative;">
-            <!-- 左側板塊選單 -->
-            <div class="sidebar p-3 border-end" style="width: 33%; height: 100%; overflow-y: auto;">
-                <h3>板塊</h3>
-                <ul id="board-list" class="list-group mt-2"></ul>
+        <div class="forum-container bg-white rounded shadow">
+            <!-- 新增的標題區域 -->
+            <div class="header-area">
+                <h1 class="forum-title text-center">去趣論壇</h1>
             </div>
 
-            <!-- 右側主視圖 -->
-            <div class="main p-3" style="height: 100%; overflow-y: hidden;">
-                <div class="header mb-3">
-                    <h5 id="board-title">選擇一個板塊</h5>
-                    <p id="board-info" class="text-muted"></p>
+            <!-- 內容區域 -->
+            <div class="content-area">
+                <!-- 左側板塊選單 -->
+                <div class="sidebar p-3 border-end">
+                    <h3>板塊</h3>
+                    <ul id="board-list" class="list-group mt-2"></ul>
                 </div>
-                <div class="posts" id="posts" style="height: 80%; overflow-y: auto;"></div>
-                <button class="btn btn-primary rounded-circle position-absolute" id="add-post"
-                    style="width: 50px; height: 50px; bottom: 20px; right: 20px;">＋</button>
+
+                <!-- 右側主視圖 -->
+                <div class="main p-3">
+                    <div class="header mb-3">
+                        <h5 id="board-title">選擇一個板塊</h5>
+                        <p id="board-info" class="text-muted"></p>
+                    </div>
+                    <div class="posts" id="posts"></div>
+                    <button class="btn btn-primary rounded-circle position-absolute" id="add-post">＋</button>
+                </div>
             </div>
 
             <!-- 貼文詳細頁面 -->
