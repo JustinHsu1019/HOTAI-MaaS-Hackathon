@@ -1,1 +1,1 @@
-# HOTAI
+# HOTAI MaaS Hackathon
