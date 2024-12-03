@@ -150,3 +150,17 @@ body {
 .post-content {
     padding: 1rem;
 }
+
+.search-bar {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.header-area {
+    flex-direction: column;
+}
+
+.header-area .forum-title {
+    margin-bottom: 0.5rem;
+}

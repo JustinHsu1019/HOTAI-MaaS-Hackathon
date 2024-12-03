@@ -34,25 +34,43 @@ function showBoard(boardName) {
     const boardInfo = document.getElementById('board-info');
     const postContainer = document.getElementById('posts');
 
+    // 確保能正確取得搜尋關鍵字，即使元素不存在
+    let keyword = '';
+    const searchInputElement = document.getElementById('search-input');
+    if (searchInputElement) {
+        keyword = searchInputElement.value.trim();
+    }
+
     boardTitle.textContent = `#${boardName}`;
-    boardInfo.textContent = `${boards[boardName].length} 則貼文`;
     postContainer.innerHTML = '';
 
-    boards[boardName].forEach(postId => {
+    let displayedPosts = 0;
+
+    // 確保 boards[boardName] 存在
+    const boardPosts = boards[boardName] || [];
+
+    boardPosts.forEach(postId => {
         const post = posts.find(p => p.id === postId);
         if (post) {
-            const div = document.createElement('div');
-            div.className = 'post card mb-2';
-            div.innerHTML = `
-                <div class="card-body">
-                    <h5 class="card-title">${post.title}</h5>
-                    <p class="card-text">${post.content.substring(0, 50)}...</p>
-                </div>
-            `;
-            div.addEventListener('click', () => showPostDetails(post));
-            postContainer.appendChild(div);
+            // 檢查標題是否包含關鍵字
+            if (!keyword || post.title.includes(keyword)) {
+                const div = document.createElement('div');
+                div.className = 'post card mb-2';
+                div.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${post.title}</h5>
+                        <p class="card-text">${post.content.substring(0, 50)}...</p>
+                    </div>
+                `;
+                div.addEventListener('click', () => showPostDetails(post));
+                postContainer.appendChild(div);
+                displayedPosts++;
+            }
         }
     });
+
+    // 更新顯示的貼文數量
+    boardInfo.textContent = `${displayedPosts} 則貼文`;
 
     // 關閉板塊列表
     closeBoardList();
@@ -181,6 +199,20 @@ document.getElementById('comment-button').addEventListener('click', addComment);
 document.getElementById('like-button').addEventListener('click', likePost);
 document.getElementById('toggle-board-list').addEventListener('click', openBoardList);
 document.getElementById('close-board-list').addEventListener('click', closeBoardList);
+
+// 搜尋按鈕點擊事件
+document.getElementById('search-button').addEventListener('click', function() {
+    if (selectedBoard) {
+        showBoard(selectedBoard);
+    }
+});
+
+// 監聽輸入框的 Enter 鍵
+document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && selectedBoard) {
+        showBoard(selectedBoard);
+    }
+});
 
 // 初始化板塊
 loadBoards();
