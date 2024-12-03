@@ -56,6 +56,9 @@ function showBoard(boardName) {
             postContainer.appendChild(div);
         }
     });
+
+    // 關閉板塊列表
+    closeBoardList();
 }
 
 // 顯示貼文詳細內容
@@ -139,12 +142,24 @@ function closePopup() {
     popupModal.hide();
 }
 
+// 開啟板塊列表
+function openBoardList() {
+    document.getElementById('board-list-overlay').style.display = 'block';
+}
+
+// 關閉板塊列表
+function closeBoardList() {
+    document.getElementById('board-list-overlay').style.display = 'none';
+}
+
 // 初始化事件
 document.getElementById('add-post').addEventListener('click', openPopup);
 document.getElementById('submit-post').addEventListener('click', addPost);
 document.getElementById('close-popup').addEventListener('click', closePopup);
 document.getElementById('comment-button').addEventListener('click', addComment);
 document.getElementById('like-button').addEventListener('click', likePost);
+document.getElementById('toggle-board-list').addEventListener('click', openBoardList);
+document.getElementById('close-board-list').addEventListener('click', closeBoardList);
 
 // 初始化板塊
 loadBoards();

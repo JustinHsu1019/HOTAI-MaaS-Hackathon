@@ -1,8 +1,8 @@
+<!-- 請永遠記住我在做一個手機的 Demo 介面，所有功能都要做在手機畫面裡 (我在模擬這個網頁是個 APP) -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- 保持不變的 head 內容 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>論壇功能 MVP</title>
@@ -12,28 +12,25 @@
 
 <body>
     <div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
-        <div class="forum-container bg-white rounded shadow">
-            <!-- 新增的標題區域 -->
+        <div class="forum-container bg-white rounded shadow position-relative">
+            <!-- 標題區域 -->
             <div class="header-area">
                 <h1 class="forum-title text-center">去趣論壇</h1>
             </div>
 
             <!-- 內容區域 -->
             <div class="content-area">
-                <!-- 左側板塊選單 -->
-                <div class="sidebar p-3 border-end">
-                    <h3>板塊</h3>
-                    <ul id="board-list" class="list-group mt-2"></ul>
-                </div>
-
-                <!-- 右側主視圖 -->
+                <!-- 主要視圖 -->
                 <div class="main p-3">
-                    <div class="header mb-3">
+                    <!-- 左上角的板塊按鈕 -->
+                    <button id="toggle-board-list" class="btn btn-outline-secondary" style="position: absolute; top: 10px; left: 10px;">#</button>
+
+                    <div class="header mb-3" style="margin-top: 50px;">
                         <h5 id="board-title">選擇一個板塊</h5>
                         <p id="board-info" class="text-muted"></p>
                     </div>
                     <div class="posts" id="posts"></div>
-                    <button class="btn btn-primary rounded-circle position-absolute" id="add-post">＋</button>
+                    <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
                 </div>
             </div>
 
@@ -83,6 +80,15 @@
                             <button id="close-popup" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 板塊列表 -->
+            <div id="board-list-overlay" class="board-list-overlay">
+                <div class="board-list-container">
+                    <h5>板塊</h5>
+                    <ul id="board-list" class="list-group mt-2"></ul>
+                    <button id="close-board-list" class="btn btn-secondary mt-3">關閉</button>
                 </div>
             </div>
 
