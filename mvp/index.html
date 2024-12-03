@@ -59,27 +59,6 @@
                 <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
             </div>
 
-            <!-- 新增貼文視窗 -->
-            <div class="modal fade" id="popup" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" style="max-width: 360px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="popupLabel">新增貼文</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <input type="text" id="post-title" class="form-control mb-2" placeholder="標題">
-                            <textarea id="post-content" class="form-control mb-2" placeholder="內文"></textarea>
-                            <input type="text" id="post-tags" class="form-control mb-2" placeholder="Hashtags (用逗號分隔)">
-                        </div>
-                        <div class="modal-footer">
-                            <button id="submit-post" class="btn btn-primary">送出</button>
-                            <button id="close-popup" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- 板塊列表 -->
             <div id="board-list-overlay" class="board-list-overlay">
                 <div class="board-list-container">
@@ -89,6 +68,27 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- 新增貼文視窗 -->
+        <div class="modal fade" id="popup" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 360px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popupLabel">新增貼文</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="post-title" class="form-control mb-2" placeholder="標題">
+                        <textarea id="post-content" class="form-control mb-2" placeholder="內文"></textarea>
+                        <input type="text" id="post-tags" class="form-control mb-2" placeholder="Hashtags (用逗號分隔)">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit-post" class="btn btn-primary">送出</button>
+                        <button id="close-popup" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
