@@ -5,14 +5,12 @@ body {
 .forum-container {
     width: 450px;
     height: 640px;
-    position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .header-area {
-    height: 15%;
+    height: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,15 +23,15 @@ body {
 
 .content-area {
     flex: 1;
-    display: block;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .main {
     flex: 1;
-    position: relative;
+    overflow-y: auto;
     padding: 1rem;
-    overflow-y: hidden;
 }
 
 .main .header {
@@ -41,8 +39,7 @@ body {
 }
 
 .posts {
-    height: calc(100% - 120px);
-    overflow-y: auto;
+    flex: 1;
 }
 
 .post {
@@ -56,9 +53,10 @@ body {
 #add-post {
     width: 50px;
     height: 50px;
+    position: absolute;
     bottom: 20px;
     right: 20px;
-    position: absolute;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,16 +64,18 @@ body {
 }
 
 #toggle-board-list {
+    position: absolute;
+    left: 10px;
     z-index: 2;
 }
 
 .board-list-overlay {
     display: none;
     position: absolute;
-    top: 0;
+    top: 160px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 160px);
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 3;
 }

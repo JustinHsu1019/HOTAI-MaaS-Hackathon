@@ -19,19 +19,18 @@
             </div>
 
             <!-- 內容區域 -->
-            <div class="content-area">
+            <div class="content-area position-relative">
+                <!-- 左上角的板塊按鈕 -->
+                <button id="toggle-board-list" class="btn btn-outline-secondary" style="position: absolute; top: 10px; left: 10px;">#</button>
                 <!-- 主要視圖 -->
                 <div class="main p-3">
-                    <!-- 左上角的板塊按鈕 -->
-                    <button id="toggle-board-list" class="btn btn-outline-secondary" style="position: absolute; top: 10px; left: 10px;">#</button>
-
                     <div class="header mb-3" style="margin-top: 50px;">
                         <h5 id="board-title">選擇一個板塊</h5>
                         <p id="board-info" class="text-muted"></p>
                     </div>
                     <div class="posts" id="posts"></div>
-                    <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
                 </div>
+                <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
             </div>
 
             <!-- 貼文詳細頁面 -->
