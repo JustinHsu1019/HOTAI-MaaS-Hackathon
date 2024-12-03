@@ -201,14 +201,14 @@ document.getElementById('toggle-board-list').addEventListener('click', openBoard
 document.getElementById('close-board-list').addEventListener('click', closeBoardList);
 
 // 搜尋按鈕點擊事件
-document.getElementById('search-button').addEventListener('click', function() {
+document.getElementById('search-button').addEventListener('click', function () {
     if (selectedBoard) {
         showBoard(selectedBoard);
     }
 });
 
 // 監聽輸入框的 Enter 鍵
-document.getElementById('search-input').addEventListener('keypress', function(e) {
+document.getElementById('search-input').addEventListener('keypress', function (e) {
     if (e.key === 'Enter' && selectedBoard) {
         showBoard(selectedBoard);
     }
