@@ -5,9 +5,6 @@ let selectedBoard = null;
 let selectedPost = null;
 
 // 初始化 Bootstrap 模態框實例
-const postDetailsModalElement = document.getElementById('postDetailsModal');
-const postDetailsModal = new bootstrap.Modal(postDetailsModalElement);
-
 const popupModalElement = document.getElementById('popup');
 const popupModal = new bootstrap.Modal(popupModalElement);
 
@@ -64,6 +61,17 @@ function showBoard(boardName) {
 // 顯示貼文詳細內容
 function showPostDetails(post) {
     selectedPost = post;
+
+    // 隱藏主視圖和按鈕
+    document.querySelector('.main').style.display = 'none';
+    document.querySelector('.header-area').style.display = 'none';
+    document.getElementById('toggle-board-list').style.display = 'none';
+    document.getElementById('add-post').style.display = 'none';
+
+    // 顯示貼文詳情視圖
+    document.getElementById('post-details').style.display = 'block';
+
+    // 填充貼文內容
     document.getElementById('detail-title').textContent = post.title;
     document.getElementById('detail-content').textContent = post.content;
     document.getElementById('like-count').textContent = post.likes || 0;
@@ -76,8 +84,6 @@ function showPostDetails(post) {
         li.classList.add('list-group-item');
         commentList.appendChild(li);
     });
-
-    postDetailsModal.show();
 }
 
 // 新增留言
@@ -128,7 +134,11 @@ function addPost() {
         saveData();
         popupModal.hide();
         loadBoards();
-        if (selectedBoard) showBoard(selectedBoard);
+        if (selectedBoard) {
+            showBoard(selectedBoard);
+        } else {
+            showBoard(Object.keys(boards)[0]);
+        }
     }
 }
 
@@ -152,6 +162,17 @@ function closeBoardList() {
     document.getElementById('board-list-overlay').style.display = 'none';
 }
 
+// 返回上一頁
+document.getElementById('back-button').addEventListener('click', function () {
+    // 隱藏貼文詳情視圖
+    document.getElementById('post-details').style.display = 'none';
+    // 顯示主視圖和按鈕
+    document.querySelector('.main').style.display = 'block';
+    document.querySelector('.header-area').style.display = 'flex';
+    document.getElementById('toggle-board-list').style.display = 'block';
+    document.getElementById('add-post').style.display = 'block';
+});
+
 // 初始化事件
 document.getElementById('add-post').addEventListener('click', openPopup);
 document.getElementById('submit-post').addEventListener('click', addPost);
@@ -163,3 +184,10 @@ document.getElementById('close-board-list').addEventListener('click', closeBoard
 
 // 初始化板塊
 loadBoards();
+
+// 首頁自動選擇第一個板塊（如果存在）
+window.onload = function () {
+    if (Object.keys(boards).length > 0) {
+        showBoard(Object.keys(boards)[0]);
+    }
+};

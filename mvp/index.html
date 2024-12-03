@@ -1,6 +1,6 @@
-<!-- 請永遠記住我在做一個手機的 Demo 介面，所有功能都要做在手機畫面裡 (我在模擬這個網頁是個 APP) -->
+<!-- 我在做一個手機的 Demo 介面，所有功能都要做在手機畫面裡 (我在模擬這個網頁是個 APP) -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
 <body>
     <div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
         <div class="forum-container bg-white rounded shadow position-relative">
+
             <!-- 標題區域 -->
             <div class="header-area">
                 <h1 class="forum-title text-center">去趣論壇</h1>
@@ -21,7 +22,8 @@
             <!-- 內容區域 -->
             <div class="content-area position-relative">
                 <!-- 左上角的板塊按鈕 -->
-                <button id="toggle-board-list" class="btn btn-outline-secondary" style="position: absolute; top: 10px; left: 10px;">#</button>
+                <button id="toggle-board-list" class="btn btn-outline-secondary"
+                    style="position: absolute; top: 10px; left: 10px;">#</button>
                 <!-- 主要視圖 -->
                 <div class="main p-3">
                     <div class="header mb-3" style="margin-top: 50px;">
@@ -30,35 +32,27 @@
                     </div>
                     <div class="posts" id="posts"></div>
                 </div>
-                <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
-            </div>
-
-            <!-- 貼文詳細頁面 -->
-            <div class="modal fade" id="postDetailsModal" tabindex="-1" aria-labelledby="postDetailsModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 360px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="postDetailsModalLabel">貼文詳情</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4 id="detail-title"></h4>
-                            <p id="detail-content"></p>
-                            <p>讚數: <span id="like-count">0</span></p>
-                            <button id="like-button" class="btn btn-outline-primary btn-sm mb-3">按讚</button>
-                            <h5>留言區</h5>
-                            <ul id="comments" class="list-group mb-3"></ul>
-                            <div class="input-group">
-                                <input type="text" id="comment-input" class="form-control" placeholder="輸入留言">
-                                <button id="comment-button" class="btn btn-outline-secondary">送出</button>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
+                <!-- 貼文詳情視圖 -->
+                <div class="post-details" id="post-details" style="display: none;">
+                    <div class="top-bar d-flex align-items-center p-2">
+                        <button id="back-button" class="btn btn-link p-0 me-2">＜</button>
+                        <span class="forum-name">自由討論區</span>
+                    </div>
+                    <div class="post-content p-3">
+                        <h4 id="detail-title"></h4>
+                        <p id="detail-content"></p>
+                        <p>讚數: <span id="like-count">0</span></p>
+                        <button id="like-button" class="btn btn-outline-primary btn-sm mb-3">按讚</button>
+                        <h5>留言區</h5>
+                        <ul id="comments" class="list-group mb-3"></ul>
+                        <div class="input-group">
+                            <input type="text" id="comment-input" class="form-control" placeholder="輸入留言">
+                            <button id="comment-button" class="btn btn-outline-secondary">送出</button>
                         </div>
                     </div>
                 </div>
+                <!-- 新增貼文按鈕 -->
+                <button class="btn btn-primary rounded-circle" id="add-post">＋</button>
             </div>
 
             <!-- 新增貼文視窗 -->
