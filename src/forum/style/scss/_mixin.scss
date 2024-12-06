@@ -1,0 +1,46 @@
+// juc 預設值 flex-start 、 align-items 預設值 stretch
+@mixin d_f($flex, $jc: flex-start, $ai: stretch) {
+	display: $flex;
+	justify-content: $jc;
+	align-items: $ai;
+}
+
+@mixin hoverHandler {
+
+	@media (pointer: fine) and (max-resolution: 2dppx),
+	screen and (pointer: fine) and (-webkit-max-device-pixel-ratio: 2),
+	(-moz-touch-enabled: 0) {
+		&:hover {
+			@content;
+		}
+	}
+
+	&:active {
+		@content;
+	}
+}
+
+@mixin hv {
+
+	@media (pointer: fine) and (max-resolution: 2dppx),
+	screen and (pointer: fine) and (-webkit-max-device-pixel-ratio: 2),
+	(-moz-touch-enabled: 0) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+@mixin ac {
+	&:active {
+		@content;
+	}
+}
+
+%hand {
+	cursor: pointer;
+}
+
+%transition {
+	transition-duration: 0.3s;
+}

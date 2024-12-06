@@ -1,0 +1,284 @@
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>HOTAL</title>
+	<link rel="stylesheet" href="./style/css/all.css" />
+</head>
+
+<body>
+
+	<div id="app" class="wrap">
+		<header v-if="showHeader" :class="['header',isTagFilter?'tagFitler':'']" v-if="!isTagFilter">
+			<img src="./images/header.jpg" alt="" class="header_bg">
+			<ul class="navTab" v-if="!isTagFilter">
+				<li class="navTab_item">我的行程</li>
+				<li class="navTab_item">探索靈感</li>
+				<li class="navTab_item on">去趣論壇</li>
+			</ul>
+			<label class="searchInp" v-if="!isTagFilter">
+				<i class="searchInp_icon"></i>
+				<input type="text" placeholder="文章搜尋" v-model="inpFilter" @keyup="inpFilterHandler"
+					@change="inpFilterHandler">
+			</label>
+
+			<div class="tagTitle" v-if="isTagFilter">
+				<button class="icon_back" @click="tagBack"></button>
+				<span :data-count="showCount"># {{tagTitle}}</span>
+			</div>
+		</header>
+		<div v-if="showPageTab" class="pageTab">
+			<router-link class="pageTab_item" to="/discuss">行程健檢討論區</router-link>
+			<router-link class="pageTab_item" to="/">探索靈感討論區</router-link>
+			<router-link class="pageTab_item" to="/explore">自由討論區</router-link>
+		</div>
+		<div :class="['content',nowPage,showLeftNav?'show_leftNav':'']">
+			<div v-if="showContentHead" class="content_head">
+				<i class="icon_hash" @click="leftNavHanler" v-if="!isTagFilter"></i>
+				<button :class="['content_head_btn',isHot?'on':'']" @click="changeHot(true)">熱門</button>
+				<button :class="['content_head_btn',isHot?'':'on']" @click="changeHot(false)">最新</button>
+			</div>
+			<router-view></router-view>
+			<left-nav @close-leftnav="closeLeftNav" @nav-handler="rNav"></left-nav>
+		</div>
+		<footer v-if="showFooter" class="footer">
+			<img src="./images/footer.jpg" alt="">
+		</footer>
+		<div v-if="showCretaeFooter" class="create_footer">
+			<img src="./images/create_footer.jpg" alt="">
+		</div>
+		<button v-if="showIconAdd" class="icon_add" @click="createHandler"></button>
+	</div>
+	<script src="https://unpkg.com/vue@latest"></script>
+	<script src="./js/libs/vue3-sfc-loader.js"></script>
+	<script src="./js/libs/vue-router_4_3_2.js"></script>
+	<script src="./js/libs/vuex_3_0_1.js"></script>
+	<script src="./store/store.js"></script>
+	<script src="./js/icon_all.js"></script>
+	<script>
+		const options={
+			moduleCache: {
+				vue: Vue
+			},
+			async getFile(url) {
+				const res=await fetch(url);
+				if (!res.ok)
+					throw Object.assign(new Error(res.statusText+' '+url), { res });
+				return {
+					getContentData: asBinary => asBinary? res.arrayBuffer():res.text(),
+				}
+			},
+			addStyle(textContent) {
+				const style=Object.assign(document.createElement('style'), { textContent });
+				const ref=document.head.getElementsByTagName('style')[0]||null;
+				document.head.insertBefore(style, ref);
+			},
+		}
+		const { loadModule }=window['vue3-sfc-loader'];
+		const routes=[
+			{
+				path: '/',
+				component: () => loadModule('./page/schedule.vue', options),
+			},
+			{
+				path: '/schedule',
+				component: () => loadModule('./page/schedule.vue', options),
+			},
+			{
+				path: '/discuss',
+				component: () => loadModule('./page/discuss.vue', options),
+			},
+			{
+				path: '/explore',
+				component: () => loadModule('./page/explore.vue', options),
+			},
+			{
+				path: '/create',
+				component: () => loadModule('./page/create.vue', options),
+			},
+			{
+				path: '/discussion',
+				component: () => loadModule('./page/discussion.vue', options),
+			},
+		];
+		const router=VueRouter.createRouter({
+			history: VueRouter.createWebHistory('#'),
+			routes
+		})
+
+		const app=Vue.createApp({
+			data() {
+				return {
+					nowPage: "",
+					icon_all: icon_all,
+					showLeftNav: false,
+					inpFilter: "",
+					isHot: false,
+					showHeader: true,
+					showPageTab: true,
+					showContentHead: true,
+					showFooter: true,
+					showIconAdd: true,
+					isTagFilter: false,
+					showCretaeFooter: false,
+					tagTitle: "",
+				};
+			},
+			components: {
+				'left-nav': Vue.defineAsyncComponent(() => loadModule('./components/LeftNav.vue', options))
+			},
+			mounted() {
+				let v=this.$store.state.version
+				let ls_v=localStorage.getItem('hotal_version');
+				vData=JSON.parse(ls_v);
+				if (!vData) {
+					localStorage.removeItem('exploreData');
+					localStorage.removeItem('discussData');
+					localStorage.removeItem('scheduleData');
+					localStorage.setItem('hotal_version', v);
+				}
+				if(vData!==v){
+					localStorage.removeItem('exploreData');
+					localStorage.removeItem('discussData');
+					localStorage.removeItem('scheduleData');
+					localStorage.setItem('hotal_version', v);
+				}
+				let tagsData=this.$store.state.tags;
+				if (tagsData.length==0) {
+					let tagArr=[]
+					const exploreLsData=localStorage.getItem('exploreData');
+					if (exploreLsData) {
+						let g=JSON.parse(exploreLsData)
+						g.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					} else {
+						this.$store.state.exploreData.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					}
+					const discussLsData=localStorage.getItem('discussData');
+					if (discussLsData) {
+						let g=JSON.parse(discussLsData)
+						g.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					} else {
+						this.$store.state.discussData.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					}
+					const scheduleLsData=localStorage.getItem('scheduleData');
+					if (scheduleLsData) {
+						let g=JSON.parse(scheduleLsData)
+						g.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					} else {
+						this.$store.state.scheduleData.forEach(element => {
+							element.tag.forEach(item => {
+								if (tagArr.indexOf(item)==-1&&item.indexOf('假資料')==-1&&item.indexOf('測試')==-1) {
+									tagArr.push(item)
+								}
+							});
+						});
+					}
+					this.$store.dispatch('resetTags', tagArr);
+				}
+			},
+			computed: {
+				showCount() {
+					return this.$store.state.showCount;
+				},
+
+			},
+			watch: {
+				$route(to, from) {
+					var now=this.$route.path;
+					if (now=="/") {
+						this.nowPage="schedule";
+					} else {
+						this.nowPage=now.split("/")[1];
+					}
+
+					if (this.nowPage=='create') {
+						this.showCretaeFooter=true
+					}
+					if (this.nowPage=='discussion') {
+						this.showCretaeFooter=false
+					}
+					if (this.nowPage=='create'||this.nowPage=='discussion') {
+						this.showHeader=false
+						this.showPageTab=false
+						this.showContentHead=false
+						this.showFooter=false
+						this.showIconAdd=false
+					} else {
+						this.showHeader=true
+						this.showPageTab=true
+						this.showContentHead=true
+						this.showFooter=true
+						this.showIconAdd=true
+						this.showCretaeFooter=false
+					}
+				},
+			},
+			methods: {
+				leftNavHanler() {
+					this.showLeftNav=true;
+				},
+				closeLeftNav() {
+					this.showLeftNav=false;
+				},
+				rNav(str) {
+					this.showLeftNav=false;
+					this.isTagFilter=true;
+					this.tagTitle=str;
+					this.$store.dispatch('setTagFilter', str);
+				},
+				tagBack() {
+					this.isTagFilter=false;
+					this.$store.dispatch('setTagFilter', "")
+				},
+				inpFilterHandler() {
+					this.$store.dispatch('setInpFilter', this.inpFilter);
+				},
+				changeHot(boo) {
+					this.isHot=boo
+				},
+				createHandler() {
+					this.$router.push('/create');
+				}
+			},
+		});
+		app.use(router);
+		app.use(store);
+		app.mount('#app');
+
+	</script>
+</body>
+
+</html>
