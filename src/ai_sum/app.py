@@ -40,9 +40,11 @@ def rank_reviews_bm25(reviews, user_preferences):
 def summarize_reviews(reviews):
     """使用 GPT-4 總結評論並生成推薦語"""
     prompt = (
-        "以下是一些景點評論：\n" +
+        "以下是一些此景點的 Google Maps 用戶評論：\n" +
         "\n".join(reviews) +
-        "\n請根據這些評論總結出推薦語，並用推薦程度標示為低、中或高。"
+        "\n請根據這些評論總結出推薦語，並用推薦程度標示為低、中或高。" +
+        "輸出範例：\n這個景點xxx yyyyyyyy。" + 
+        "\n推薦程度：高"
     )
     try:
         response = openai.ChatCompletion.create(
