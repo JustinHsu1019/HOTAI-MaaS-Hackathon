@@ -16,17 +16,19 @@ GOOGLE_MAPS_API_KEY = config.get("Google", "api_key")
 openai.api_key = config.get("OpenAI", "api_key")
 
 # 輔助函數
-def fetch_google_reviews(place_id):
-    """抓取 Google Maps 的目標景點評論"""
-    url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&fields=reviews&key={GOOGLE_MAPS_API_KEY}"
+def fetch_google_reviews_and_name(place_id):
+    """抓取 Google Maps 的目標景點名稱與評論"""
+    url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&fields=name,reviews&key={GOOGLE_MAPS_API_KEY}"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        reviews = data.get("result", {}).get("reviews", [])
-        return [review["text"] for review in reviews if "text" in review]
+        result = data.get("result", {})
+        name = result.get("name", "")
+        reviews = [review["text"] for review in result.get("reviews", []) if "text" in review]
+        return name, reviews
     else:
-        st.error("無法取得評論，請確認 API Key 或 Place ID 是否正確。")
-        return []
+        st.error("無法取得評論與名稱，請確認 API Key 或 Place ID 是否正確。")
+        return "", []
 
 def rank_reviews_bm25(reviews, user_preferences):
     """使用 BM25 對評論進行排序"""
@@ -37,14 +39,13 @@ def rank_reviews_bm25(reviews, user_preferences):
     sorted_reviews = [review for _, review in sorted(zip(scores, reviews), reverse=True)]
     return sorted_reviews[:100]
 
-def summarize_reviews(reviews):
+def summarize_reviews(place_name, reviews):
     """使用 GPT-4 總結評論並生成推薦語"""
     prompt = (
-        "以下是一些此景點的 Google Maps 用戶評論：\n" +
+        f"以下是一些 {place_name} 的 Google Maps 用戶評論：\n" +
         "\n".join(reviews) +
-        "\n請根據這些評論總結出推薦語，並用推薦程度標示為低、中或高。" +
-        "輸出範例：\n這個景點xxx yyyyyyyy。" + 
-        "\n推薦程度：高"
+        f"\n請根據這些評論為 {place_name} 總結出推薦語，並用推薦程度標示為低、中或高。" +
+        "輸出範例：\n這個景點xxx yyyyyyyy。\n推薦程度：高"
     )
     try:
         response = openai.ChatCompletion.create(
@@ -68,9 +69,6 @@ preferences = st.sidebar.text_input("偏好（例如：風景、歷史、美食�
 # 從 Query Params 取得 place_id（若有）
 params = st.query_params
 place_id = params.get("place_id", "")
-
-# 使用者可確認的 Place ID 欄位
-# place_id = st.text_input("選擇的景點 Place ID:", value=place_id)
 
 st.header("選擇景點")
 components.html(f"""
@@ -120,15 +118,15 @@ if st.button("生成建議"):
     if not place_id:
         st.error("請點選地圖以選擇景點")
     else:
-        st.write("正在抓取評論，請稍候...")
-        reviews = fetch_google_reviews(place_id)
+        st.write("正在抓取評論和景點名稱，請稍候...")
+        place_name, reviews = fetch_google_reviews_and_name(place_id)
         if reviews:
-            st.write("成功取得評論，正在進行篩選與重排序...")
+            st.write(f"成功取得 '{place_name}' 的評論，正在進行篩選與重排序...")
             top_reviews = rank_reviews_bm25(reviews, preferences)
             top_20_reviews = top_reviews[:5]
 
             st.write("正在生成推薦語...")
-            summary = summarize_reviews(top_20_reviews)
+            summary = summarize_reviews(place_name, top_20_reviews)
 
             st.subheader("Top 5 條評論")
             for idx, review in enumerate(top_20_reviews, 1):
