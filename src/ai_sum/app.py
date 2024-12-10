@@ -132,7 +132,7 @@ if st.button("生成建議"):
 
             st.subheader("Top 5 條評論")
             for idx, review in enumerate(top_20_reviews, 1):
-                with st.expander(f"評論 {idx}"):
+                with st.expander(f"評論 {idx}", expanded=True):
                     st.write(review)
 
             st.subheader("最終建議")
